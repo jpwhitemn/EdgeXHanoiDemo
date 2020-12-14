@@ -1,0 +1,38 @@
+name: "Comet.Probe.Modbus.Profile"
+manufacturer: "Comet Systems"
+model: "T0310"
+labels:
+- "Temperature"
+description: "Comet Systems T0310 Temperature Probe interface"
+
+deviceResources:
+-
+  name: "ProbeTemperature"
+  description: "Probe Temperature °F (Read Only)"
+  attributes:
+    { primaryTable: "INPUT_REGISTERS", startingAddress: "49" }
+  properties:
+    value:
+      { type: "INT16", readWrite: "R" }
+    units:
+      { type: "String", readWrite: "R", defaultValue: "degrees Fahr"}
+
+deviceCommands:
+-
+  name: "Values"
+  get:
+    - { index: "1", operation: "get", deviceResource: "ProbeTemperature"}
+
+coreCommands:
+-
+  name: "Temp"
+  get:
+    path: "/api/v1/device/{deviceId}/Values"
+    responses:
+    -
+      code: "200"
+      description: "Get the temperature values from the device"
+      expectedValues: ["ProbeTemperature"]
+    - code: "500"
+      description: "internal server error"
+      expectedValues: []
