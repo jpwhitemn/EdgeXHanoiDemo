@@ -6,6 +6,8 @@ This demo shows the Hanoi release of EdgeX with the following devices:
 - Patlite Signal Tower (SNMP)
 - Moisture sensor
 
+*The device services - with customizations for these devices - are included with this demo, but see the originally linked repositories for updates to the device service code*
+
 ## Starting
 
 To run the demo, perform the following operations:
