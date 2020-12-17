@@ -173,27 +173,27 @@ Export to a Mosquitto Topic (in this case on another server).
 	```
 3. Add a passwords.txt to /etc/mosquitto/conf.d and use mosquitto's passwd encryption tool to encrypt
 4. Add an application configuration service to the compose file (using MQTT Profile), and provide overrides to the standard configuration (values subject to your configuration/users/etc.)
-``` yaml
-		environment:
-		BINDING_PUBLISHTOPIC: events
-		CLIENTS_COMMAND_HOST: edgex-core-command
-		CLIENTS_COREDATA_HOST: edgex-core-data
-		CLIENTS_DATA_HOST: edgex-core-data
-		CLIENTS_METADATA_HOST: edgex-core-metadata
-		CLIENTS_NOTIFICATIONS_HOST: edgex-support-notifications
-		CLIENTS_RULESENGINE_HOST: edgex-kuiper
-		CLIENTS_SCHEDULER_HOST: edgex-support-scheduler
-		CLIENTS_VIRTUALDEVICE_HOST: edgex-device-virtual
-		DATABASES_PRIMARY_HOST: edgex-redis
-		EDGEX_PROFILE: mqtt-export
-		EDGEX_SECURITY_SECRET_STORE: "false"
-		MESSAGEBUS_SUBSCRIBEHOST_HOST: edgex-core-data
-		REGISTRY_HOST: edgex-core-consul
-		SERVICE_HOST: edgex-app-service-configurable-mqtt
-		SERVICE_PORT: 48101
-		Writable_Pipeline_Functions_MQTTSend_Addressable_Address: 192.168.0.33
-		Writable_Pipeline_Functions_MQTTSend_Addressable_Port: 1884
-		Writable_Pipeline_Functions_MQTTSend_Addressable_Protocol: tcp
-		Writable_Pipeline_Functions_MQTTSend_Addressable_Topic: edgex/EdgeXEvents
+``` yml
+	environment:
+	BINDING_PUBLISHTOPIC: events
+	CLIENTS_COMMAND_HOST: edgex-core-command
+	CLIENTS_COREDATA_HOST: edgex-core-data
+	CLIENTS_DATA_HOST: edgex-core-data
+	CLIENTS_METADATA_HOST: edgex-core-metadata
+	CLIENTS_NOTIFICATIONS_HOST: edgex-support-notifications
+	CLIENTS_RULESENGINE_HOST: edgex-kuiper
+	CLIENTS_SCHEDULER_HOST: edgex-support-scheduler
+	CLIENTS_VIRTUALDEVICE_HOST: edgex-device-virtual
+	DATABASES_PRIMARY_HOST: edgex-redis
+	EDGEX_PROFILE: mqtt-export
+	EDGEX_SECURITY_SECRET_STORE: "false"
+	MESSAGEBUS_SUBSCRIBEHOST_HOST: edgex-core-data
+	REGISTRY_HOST: edgex-core-consul
+	SERVICE_HOST: edgex-app-service-configurable-mqtt
+	SERVICE_PORT: 48101
+	Writable_Pipeline_Functions_MQTTSend_Addressable_Address: 192.168.0.33
+	Writable_Pipeline_Functions_MQTTSend_Addressable_Port: 1884
+	Writable_Pipeline_Functions_MQTTSend_Addressable_Protocol: tcp
+	Writable_Pipeline_Functions_MQTTSend_Addressable_Topic: edgex/EdgeXEvents
 ```
 
