@@ -1,25 +1,7 @@
-# Device Modbus Go
+# Device Modbus Changes
 
-**This is a copy with customizations for demo purposes from https://github.com/edgexfoundry/device-modbus-go**
+This folder contains files that are added or modified when used with EdgeX's [device-modbus-go](https://github.com/edgexfoundry/device-modbus-go).
+Specifically:
+- cmd/res/configuration.toml
+- cmd/res/comet.t0310.probe.profile.yml (added fir the Comet Temperature Probe device profile)
 
-## Overview
-Modbus Micro Service - device service for connecting Modbus devices to EdgeX.
-## Usage
-Users can refer to [the document](https://docs.edgexfoundry.org/1.2/examples/Ch-ExamplesAddingModbusDevice) to learn how to use this device service.
-
-## Modbus Simulator
-Build and run the Modbus simulator
-```
-$ cd simulator
-$ go build
-$ ./simulator 
-Modbus TCP address: 0.0.0.0:1502 
-Start up a Modbus TCP simulator.
-```
-
-## Community
-- Chat: https://edgexfoundry.slack.com
-- Mailing lists: https://lists.edgexfoundry.org/mailman/listinfo
-
-## License
-[Apache-2.0](LICENSE)

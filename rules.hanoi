@@ -5,7 +5,7 @@ Send the following POST to the Kuiper Rules Engine
 192.168.0.35:48075/streams (with content type set to application/json)
 
 {
-  "sql": "create stream tempwatch() WITH (FORMAT=\"JSON\", TYPE=\"edgex\")"
+  "sql": "create stream watches() WITH (FORMAT=\"JSON\", TYPE=\"edgex\")"
 }
 
 Create the rule to turn on the patlite
@@ -15,7 +15,7 @@ Send the following POST to the Kuiper Rules Engine (replace command IDs as appro
 
 {
   "id": "probe-out-of-position",
-  "sql": "SELECT ProbeTemperature FROM tempwatch WHERE ProbeTemperature < 900",
+  "sql": "SELECT ProbeTemperature FROM watches WHERE ProbeTemperature < 900",
   "actions": [
     {
       "rest": {
@@ -38,7 +38,7 @@ Send the following POST to the Kuiper Rules Engine (replace command IDs as appro
 
 {
   "id": "probe-in-position",
-  "sql": "SELECT ProbeTemperature FROM tempwatch WHERE ProbeTemperature >= 900",
+  "sql": "SELECT ProbeTemperature FROM watches WHERE ProbeTemperature >= 900",
   "actions": [
     {
       "rest": {
@@ -60,7 +60,7 @@ Send the following POST to the Kuiper Rules Engine (replace command IDs as appro
 
 {
   "id": "moisture-detected",
-  "sql": "SELECT MoistureState FROM tempwatch WHERE MoistureState >= 1",
+  "sql": "SELECT MoistureState FROM watches WHERE MoistureState >= 1",
   "actions": [
     {
       "rest": {
@@ -79,7 +79,7 @@ Send the following POST to the Kuiper Rules Engine (replace command IDs as appro
 
 {
   "id": "moisture-not-detected",
-  "sql": "SELECT MoistureState FROM tempwatch WHERE MoistureState < 1",
+  "sql": "SELECT MoistureState FROM watches WHERE MoistureState < 1",
   "actions": [
     {
       "rest": {

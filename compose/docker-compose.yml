@@ -28,6 +28,41 @@ networks:
   edgex-network:
     driver: bridge
 services:
+  app-service-mqtt:
+    container_name: edgex-app-service-configurable-mqtt
+    depends_on:
+    - consul
+    - data
+    environment:
+      BINDING_PUBLISHTOPIC: events
+      CLIENTS_COMMAND_HOST: edgex-core-command
+      CLIENTS_COREDATA_HOST: edgex-core-data
+      CLIENTS_DATA_HOST: edgex-core-data
+      CLIENTS_METADATA_HOST: edgex-core-metadata
+      CLIENTS_NOTIFICATIONS_HOST: edgex-support-notifications
+      CLIENTS_RULESENGINE_HOST: edgex-kuiper
+      CLIENTS_SCHEDULER_HOST: edgex-support-scheduler
+      CLIENTS_VIRTUALDEVICE_HOST: edgex-device-virtual
+      DATABASES_PRIMARY_HOST: edgex-redis
+      EDGEX_PROFILE: mqtt-export
+      EDGEX_SECURITY_SECRET_STORE: "false"
+      MESSAGEBUS_SUBSCRIBEHOST_HOST: edgex-core-data
+      REGISTRY_HOST: edgex-core-consul
+      SERVICE_HOST: edgex-app-service-configurable-mqtt
+      SERVICE_PORT: 48101
+      Writable_Pipeline_Functions_MQTTSend_Addressable_Address: 192.168.0.33
+      Writable_Pipeline_Functions_MQTTSend_Addressable_Port: 1884
+      Writable_Pipeline_Functions_MQTTSend_Addressable_Protocol: tcp
+      Writable_Pipeline_Functions_MQTTSend_Addressable_Topic: debug/test
+      Writeable_InsecureSecrets_mqtt_Secrets_Username: edgex
+      Writeable_InsecureSecrets_mqtt_Secrets_Password: password
+    hostname: edgex-app-service-configurable-mqtt
+    image: edgexfoundry/docker-app-service-configurable:1.3.0
+    networks:
+      edgex-network: {}
+    ports:
+    - 48101:48101/tcp
+    read_only: true
   app-service-rules:
     container_name: edgex-app-service-configurable-rules
     depends_on:
